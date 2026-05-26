@@ -1,4 +1,4 @@
-# DSA — *My Way*
+# DSA-*My Way*
 
 > A systems-first approach to Data Structures & Algorithms.  
 > Not just solving problems — but understanding how real systems think, evolve, and operate.
