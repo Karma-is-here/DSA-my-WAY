@@ -1,0 +1,13 @@
+// ============================================================================
+// SRC/GRAPH/EDGE.CPP
+// ============================================================================
+// IMPLEMENTATION PLACEHOLDER: Keep Edge lightweight; most graph behavior belongs to Graph.
+//
+// CONNECTIONS:
+//   See the corresponding header under include/logistics/ for the contract.
+//   This .cpp owns implementation; the header owns the public interface.
+//
+// PRODUCTION RULE:
+//   Keep domain rules in the correct subsystem. Prefer small, testable
+//   functions over a monolithic implementation.
+//
