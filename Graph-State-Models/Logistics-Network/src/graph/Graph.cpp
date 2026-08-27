@@ -7,23 +7,40 @@
 
 namespace logistics {
 
-void Graph::addEdge(int from, int to, double travelTime) {
-    adjacency_[from].push_back({to, travelTime});
-    adjacency_.try_emplace(to);
+void Graph::addNode(int nodeId) {
+    adjacencyList_.try_emplace(nodeId);
 }
 
-const std::vector<Edge>& Graph::neighbors(int node) const {
-    static const std::vector<Edge> noNeighbors;
-    const auto it = adjacency_.find(node);
-    return it == adjacency_.end() ? noNeighbors : it->second;
+void Graph::addEdge(
+    int source,
+    int destination,
+    double travelTime
+) {
+    addNode(source);
+    addNode(destination);
+
+    adjacencyList_[source].emplace_back(
+        destination,
+        travelTime
+    );
+}
+
+const std::vector<Edge>& Graph::getNeighbors(int nodeId) const {
+
+    static const std::vector<Edge> empty;
+
+    auto it = adjacencyList_.find(nodeId);
+
+    if (it == adjacencyList_.end()) {
+        return empty;
+    }
+
+    return it->second;
+}
+
+bool Graph::hasNode(int nodeId) const {
+    return adjacencyList_.find(nodeId)
+        != adjacencyList_.end();
 }
 
 } // namespace logistics
-// CONNECTIONS:
-//   See the corresponding header under include/logistics/ for the contract.
-//   This .cpp owns implementation; the header owns the public interface.
-//
-// PRODUCTION RULE:
-//   Keep domain rules in the correct subsystem. Prefer small, testable
-//   functions over a monolithic implementation.
-//

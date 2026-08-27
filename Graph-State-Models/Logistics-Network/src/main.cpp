@@ -11,7 +11,7 @@
 //   Keep domain rules in the correct subsystem. Prefer small, testable
 //   functions over a monolithic implementation.
 //
-#include "logistics/simulation/SimulationState.h"
+/*#include "logistics/simulation/SimulationState.h"
 #include "logistics/simulation/WorldInitializer.h"
 
 #include <iostream>
@@ -43,6 +43,33 @@ int main() {
     std::cout << "Orders: "
               << state.getOrders().size()
               << '\n';
+
+    return 0;
+} */
+
+#include "logistics/graph/Graph.h"
+
+#include <iostream>
+
+int main() {
+
+    logistics::Graph graph;
+
+    graph.addEdge(1, 2, 10);
+    graph.addEdge(1, 3, 20);
+    graph.addEdge(2, 3, 5);
+
+    std::cout << "=== LOGISTICS GRAPH ===\n";
+
+    for (const auto& edge : graph.getNeighbors(1)) {
+
+        std::cout
+            << "Node 1 -> Node "
+            << edge.getDestination()
+            << " | Travel Time: "
+            << edge.getTravelTime()
+            << '\n';
+    }
 
     return 0;
 }

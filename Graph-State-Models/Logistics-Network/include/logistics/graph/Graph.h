@@ -36,7 +36,8 @@
 //   Directed edges, configurable weights, disconnected-node handling.
 #pragma once
 
-#include "Edge.h"
+#include "logistics/graph/Edge.h"
+
 #include <unordered_map>
 #include <vector>
 
@@ -44,11 +45,20 @@ namespace logistics {
 
 class Graph {
 public:
-    void addEdge(int from, int to, double travelTime);
-    const std::vector<Edge>& neighbors(int node) const;
+    void addNode(int nodeId);
+
+    void addEdge(
+        int source,
+        int destination,
+        double travelTime
+    );
+
+    const std::vector<Edge>& getNeighbors(int nodeId) const;
+
+    bool hasNode(int nodeId) const;
 
 private:
-    std::unordered_map<int, std::vector<Edge>> adjacency_;
+    std::unordered_map<int, std::vector<Edge>> adjacencyList_;
 };
 
 } // namespace logistics
