@@ -24,9 +24,16 @@
 
 namespace logistics {
 
-struct Edge {
-    int destination{};
-    double travelTime{};
+class Edge {
+public:
+    Edge(int destination, double travelTime);
+
+    int getDestination() const;
+    double getTravelTime() const;
+
+private:
+    int destination_;
+    double travelTime_;
 };
 
 } // namespace logistics
